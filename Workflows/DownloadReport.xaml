@@ -121,7 +121,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DownloadReport" sap:VirtualizedContainerService.HintSize="692,1414" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DownloadReport" sap:VirtualizedContainerService.HintSize="957,1996" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="Config" />
       <Variable x:TypeArguments="ui:DatabaseConnection" Name="DBConnection" />
@@ -137,14 +137,14 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="518,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Getting new hire from DB&quot;]" />
-    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="LastDBRun" CacheStrategy="None" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="518,175" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="536,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Getting new hire from DB&quot;]" />
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="LastDBRun" CacheStrategy="None" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="536,175" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
       <ui:GetRobotAsset.Value>
         <OutArgument x:TypeArguments="x:String">[LastDBRun]</OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
-    <ui:ReadTextFile File="{x:Null}" Content="[SQLQuery]" DisplayName="Read Text File" FileName="Data\SQLQuery.txt" sap:VirtualizedContainerService.HintSize="518,112" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="518,173" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;Running Query for &quot; + String.Format(&quot;'{0:yyyy-MM-dd}' AND '{1:yyyy-MM-dd}'&quot;, Date.Parse(LastDBRun).AddDays(1), DateTime.Now.AddDays(7 - CInt(DateTime.Now.DayOfWeek)))]">
+    <ui:ReadTextFile File="{x:Null}" Content="[SQLQuery]" DisplayName="Read Text File" FileName="Data\SQLQuery.txt" sap:VirtualizedContainerService.HintSize="536,112" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="536,173" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;Running Query for &quot; + String.Format(&quot;'{0:yyyy-MM-dd}' AND '{1:yyyy-MM-dd}'&quot;, Date.Parse(LastDBRun).AddDays(1), DateTime.Now.AddDays(7 - CInt(DateTime.Now.DayOfWeek)))]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -152,7 +152,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <Assign sap:VirtualizedContainerService.HintSize="518,115" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign sap:VirtualizedContainerService.HintSize="536,115" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[SQLQuery]</OutArgument>
       </Assign.To>
@@ -161,33 +161,38 @@
 )]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[NOT in_TestRead]" DisplayName="If not test read" sap:VirtualizedContainerService.HintSize="518,595" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[NOT in_TestRead]" DisplayName="If not test read" sap:VirtualizedContainerService.HintSize="536,1177" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484,254" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="502,836" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Connect To DB" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Connect To DB" sap:VirtualizedContainerService.HintSize="468,639" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="DBCredentials_ActiveUsers" CacheStrategy="None" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2" Password="[DBPass]" Username="[DBUser]" />
+            <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="DBConnectionString_ActiveUsers" CacheStrategy="None" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="GetRobotAsset_3">
+              <ui:GetRobotAsset.Value>
+                <OutArgument x:TypeArguments="x:String">[DBConnectionString]</OutArgument>
+              </ui:GetRobotAsset.Value>
+            </ui:GetRobotAsset>
             <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[DBConnectionString]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[in_Config("DBConnectionString").ToString.Replace("&lt;userid&gt;",DBUser).Replace("&lt;password&gt;",new System.Net.NetworkCredential("",DBPass).Password)]</InArgument>
+                <InArgument x:TypeArguments="x:String">[DBConnectionString.Replace("&lt;userid&gt;",DBUser).Replace("&lt;password&gt;",new System.Net.NetworkCredential("",DBPass).Password)]</InArgument>
               </Assign.Value>
             </Assign>
             <ui:DatabaseConnect DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="Microsoft.Data.SQLClient" ConnectionString="[DBConnectionString]" DatabaseConnection="[DBConnection]" />
           </Sequence>
-          <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" DataTable="[out_newHireData]" DisplayName="Run Query" ExistingDbConnection="[DBConnection]" sap:VirtualizedContainerService.HintSize="450,137" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[SQLQuery]">
+          <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" DataTable="[out_newHireData]" DisplayName="Run Query" ExistingDbConnection="[DBConnection]" sap:VirtualizedContainerService.HintSize="468,137" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[SQLQuery]">
             <ui:ExecuteQuery.Parameters>
               <scg:Dictionary x:TypeArguments="x:String, Argument" />
             </ui:ExecuteQuery.Parameters>
@@ -195,7 +200,7 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="484,171" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="502,171" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -205,7 +210,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="518,48" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="536,48" sap2010:WorkflowViewState.IdRef="CommentOut_2">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="468,1069" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
