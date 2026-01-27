@@ -142,7 +142,7 @@
       <AssemblyReference>NPOI.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SendOnboardingEmail" sap:VirtualizedContainerService.HintSize="1132,1179" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SendOnboardingEmail" sap:VirtualizedContainerService.HintSize="1132,1376" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="OnboardingEmail" />
       <Variable x:TypeArguments="x:String" Name="AttachmentPath" />
@@ -153,8 +153,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Send onboarding email&quot;]" />
-    <ui:ReadTextFile File="{x:Null}" Content="[OnboardingEmail]" DisplayName="Read Text File" FileName="Data\onboarding_email_new.txt" sap:VirtualizedContainerService.HintSize="452,113" sap2010:WorkflowViewState.IdRef="ReadTextFile_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="522,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Send onboarding email&quot;]" />
+    <ui:ReadTextFile File="{x:Null}" Content="[OnboardingEmail]" DisplayName="Read Text File" FileName="Data\onboarding_email_new.txt" sap:VirtualizedContainerService.HintSize="522,113" sap2010:WorkflowViewState.IdRef="ReadTextFile_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -162,7 +162,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ReadTextFile>
-    <Assign sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="522,57" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[AttachmentPath]</OutArgument>
       </Assign.To>
@@ -176,7 +176,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:PathExists Exists="{x:Null}" DisplayName="Path Exists" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[AttachmentPath]" PathType="File" Resource="[AttachmentFile]">
+    <ui:PathExists Exists="{x:Null}" DisplayName="Path Exists" sap:VirtualizedContainerService.HintSize="522,57" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[AttachmentPath]" PathType="File" Resource="[AttachmentFile]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -184,121 +184,132 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:PathExists>
-    <If Condition="[NOT CBool(in_Config(&quot;TestMode&quot;))]" sap:VirtualizedContainerService.HintSize="452,754" sap2010:WorkflowViewState.IdRef="If_1">
-      <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,599" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <umam:SendMailConnections ArgumentAttachmentPaths="{x:Null}" AttachmentPaths="{x:Null}" Attachments="{x:Null}" Bcc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" Mailbox="{x:Null}" MailboxBackup="{x:Reference __ReferenceID0}" ReplyTo="{x:Null}" TextBody="{x:Null}" AttachmentInputMode="Builder" AuthScopesInvalid="False" Body="[OnboardingEmail]" Cc="[in_CC]" ConnectionId="57574e62-4112-4c1a-9f2b-65d378f24ff2" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="522,540" sap2010:WorkflowViewState.IdRef="SendMailConnections_2" Importance="Normal" InputType="HTML" SaveAsDraft="False" Subject="Welcome to UiPath - Sales New Hire Orientation" To="[in_ToAddress.Split(&quot;;&quot;)]" UseConnectionService="True" UseSharedMailbox="False">
+      <umam:SendMailConnections.AttachmentList>
+        <scg:List x:TypeArguments="InArgument(upr:IResource)" Capacity="4">
+          <InArgument x:TypeArguments="upr:IResource">[AttachmentFile]</InArgument>
+        </scg:List>
+      </umam:SendMailConnections.AttachmentList>
+      <umam:SendMailConnections.AttachmentsBackup>
+        <usau:BackupSlot x:TypeArguments="umame:AttachmentInputMode" StoredValue="Builder">
+          <usau:BackupSlot.BackupValues>
+            <scg:List x:TypeArguments="x:Object" x:Key="Existing" Capacity="1">
+              <x:Null />
+            </scg:List>
+          </usau:BackupSlot.BackupValues>
+        </usau:BackupSlot>
+      </umam:SendMailConnections.AttachmentsBackup>
+      <umam:SendMailConnections.InputTypeBackup>
+        <usau:BackupSlot x:TypeArguments="umame:BodyInputType" StoredValue="HTML">
+          <usau:BackupSlot.BackupValues>
+            <scg:Dictionary x:TypeArguments="umame:BodyInputType, scg:List(x:Object)" />
+          </usau:BackupSlot.BackupValues>
+        </usau:BackupSlot>
+      </umam:SendMailConnections.InputTypeBackup>
+      <umam:SendMailConnections.MailboxArg>
+        <umamm:MailboxArgument SharedMailbox="{x:Null}" UseSharedMailbox="False">
+          <umamm:MailboxArgument.Backup>
+            <usau:BackupSlot x:TypeArguments="umame:MailboxSelectionMode" x:Name="__ReferenceID0" StoredValue="NoMailbox">
+              <usau:BackupSlot.BackupValues>
+                <scg:List x:TypeArguments="x:Object" x:Key="NoMailbox" Capacity="1">
+                  <x:Null />
+                </scg:List>
+                <scg:List x:TypeArguments="x:Object" x:Key="UseISMailbox" Capacity="1">
+                  <x:Null />
+                </scg:List>
+              </usau:BackupSlot.BackupValues>
+            </usau:BackupSlot>
+          </umamm:MailboxArgument.Backup>
+        </umamm:MailboxArgument>
+      </umam:SendMailConnections.MailboxArg>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </umam:SendMailConnections>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="522,411" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="486,309" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <umam:SendMailConnections ArgumentAttachmentPaths="{x:Null}" AttachmentPaths="{x:Null}" Attachments="{x:Null}" Bcc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" Mailbox="{x:Null}" MailboxBackup="{x:Reference __ReferenceID0}" ReplyTo="{x:Null}" TextBody="{x:Null}" AttachmentInputMode="Builder" AuthScopesInvalid="False" Body="[OnboardingEmail]" Cc="[in_CC]" ConnectionId="57574e62-4112-4c1a-9f2b-65d378f24ff2" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="416,535" sap2010:WorkflowViewState.IdRef="SendMailConnections_2" Importance="Normal" InputType="HTML" SaveAsDraft="False" Subject="Welcome to UiPath - Sales New Hire Orientation" To="[in_ToAddress.Split(&quot;;&quot;)]" UseConnectionService="True" UseSharedMailbox="False">
-            <umam:SendMailConnections.AttachmentList>
-              <scg:List x:TypeArguments="InArgument(upr:IResource)" Capacity="4">
-                <InArgument x:TypeArguments="upr:IResource">[AttachmentFile]</InArgument>
-              </scg:List>
-            </umam:SendMailConnections.AttachmentList>
-            <umam:SendMailConnections.AttachmentsBackup>
-              <usau:BackupSlot x:TypeArguments="umame:AttachmentInputMode" StoredValue="Builder">
-                <usau:BackupSlot.BackupValues>
-                  <scg:List x:TypeArguments="x:Object" x:Key="Existing" Capacity="1">
-                    <x:Null />
-                  </scg:List>
-                </usau:BackupSlot.BackupValues>
-              </usau:BackupSlot>
-            </umam:SendMailConnections.AttachmentsBackup>
-            <umam:SendMailConnections.InputTypeBackup>
-              <usau:BackupSlot x:TypeArguments="umame:BodyInputType" StoredValue="HTML">
-                <usau:BackupSlot.BackupValues>
-                  <scg:Dictionary x:TypeArguments="umame:BodyInputType, scg:List(x:Object)" />
-                </usau:BackupSlot.BackupValues>
-              </usau:BackupSlot>
-            </umam:SendMailConnections.InputTypeBackup>
-            <umam:SendMailConnections.MailboxArg>
-              <umamm:MailboxArgument SharedMailbox="{x:Null}" UseSharedMailbox="False">
-                <umamm:MailboxArgument.Backup>
-                  <usau:BackupSlot x:TypeArguments="umame:MailboxSelectionMode" x:Name="__ReferenceID0" StoredValue="NoMailbox">
-                    <usau:BackupSlot.BackupValues>
-                      <scg:List x:TypeArguments="x:Object" x:Key="NoMailbox" Capacity="1">
-                        <x:Null />
-                      </scg:List>
-                      <scg:List x:TypeArguments="x:Object" x:Key="UseISMailbox" Capacity="1">
-                        <x:Null />
-                      </scg:List>
-                    </usau:BackupSlot.BackupValues>
-                  </usau:BackupSlot>
-                </umamm:MailboxArgument.Backup>
-              </umamm:MailboxArgument>
-            </umam:SendMailConnections.MailboxArg>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </umam:SendMailConnections>
+          <If Condition="[NOT CBool(in_Config(&quot;TestMode&quot;))]" sap:VirtualizedContainerService.HintSize="452,249" sap2010:WorkflowViewState.IdRef="If_1">
+            <If.Then>
+              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign sap:VirtualizedContainerService.HintSize="416,179" sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[OnboardingEmail]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[OnboardingEmail.Replace("&lt;p&gt;&lt;i&gt;&lt;/i&gt;&lt;/p&gt;","&lt;p&gt;&lt;i&gt; This is a test email, real email would have been sent to: " + in_ToAddress + "&lt;/i&gt;&lt;/p&gt;")]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <umam:SendMailConnections ArgumentAttachmentPaths="{x:Null}" AttachmentPaths="{x:Null}" Attachments="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" Mailbox="{x:Null}" MailboxBackup="{x:Reference __ReferenceID1}" ReplyTo="{x:Null}" TextBody="{x:Null}" AttachmentInputMode="Builder" AuthScopesInvalid="False" Body="[OnboardingEmail]" ConnectionId="d3a25ef7-edf6-4e4c-9355-661c7c1fa9cb" DisplayName="Send Test Email" sap:VirtualizedContainerService.HintSize="416,586" sap2010:WorkflowViewState.IdRef="SendMailConnections_3" Importance="Normal" InputType="HTML" SaveAsDraft="False" Subject="Welcome to UiPath - Sales New Hire Orientation" To="[in_Config(&quot;SendMail_TestMode&quot;).ToString.Split(&quot;;&quot;)]" UseConnectionService="True" UseSharedMailbox="False">
+                  <umam:SendMailConnections.AttachmentList>
+                    <scg:List x:TypeArguments="InArgument(upr:IResource)" Capacity="4">
+                      <InArgument x:TypeArguments="upr:IResource">[AttachmentFile]</InArgument>
+                    </scg:List>
+                  </umam:SendMailConnections.AttachmentList>
+                  <umam:SendMailConnections.AttachmentsBackup>
+                    <usau:BackupSlot x:TypeArguments="umame:AttachmentInputMode" StoredValue="Builder">
+                      <usau:BackupSlot.BackupValues>
+                        <scg:List x:TypeArguments="x:Object" x:Key="Existing" Capacity="1">
+                          <x:Null />
+                        </scg:List>
+                      </usau:BackupSlot.BackupValues>
+                    </usau:BackupSlot>
+                  </umam:SendMailConnections.AttachmentsBackup>
+                  <umam:SendMailConnections.InputTypeBackup>
+                    <usau:BackupSlot x:TypeArguments="umame:BodyInputType" StoredValue="HTML">
+                      <usau:BackupSlot.BackupValues>
+                        <scg:Dictionary x:TypeArguments="umame:BodyInputType, scg:List(x:Object)" />
+                      </usau:BackupSlot.BackupValues>
+                    </usau:BackupSlot>
+                  </umam:SendMailConnections.InputTypeBackup>
+                  <umam:SendMailConnections.MailboxArg>
+                    <umamm:MailboxArgument SharedMailbox="{x:Null}" UseSharedMailbox="False">
+                      <umamm:MailboxArgument.Backup>
+                        <usau:BackupSlot x:TypeArguments="umame:MailboxSelectionMode" x:Name="__ReferenceID1" StoredValue="UseISMailbox">
+                          <usau:BackupSlot.BackupValues>
+                            <scg:List x:TypeArguments="x:Object" x:Key="NoMailbox" Capacity="1">
+                              <x:Null />
+                            </scg:List>
+                          </usau:BackupSlot.BackupValues>
+                        </usau:BackupSlot>
+                      </umamm:MailboxArgument.Backup>
+                    </umamm:MailboxArgument>
+                  </umam:SendMailConnections.MailboxArg>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </umam:SendMailConnections>
+              </Sequence>
+            </If.Else>
+          </If>
         </Sequence>
-      </If.Then>
-      <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_3">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Assign sap:VirtualizedContainerService.HintSize="416,179" sap2010:WorkflowViewState.IdRef="Assign_2">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[OnboardingEmail]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[OnboardingEmail.Replace("&lt;p&gt;&lt;i&gt;&lt;/i&gt;&lt;/p&gt;","&lt;p&gt;&lt;i&gt; This is a test email, real email would have been sent to: " + in_ToAddress + "&lt;/i&gt;&lt;/p&gt;")]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <umam:SendMailConnections ArgumentAttachmentPaths="{x:Null}" AttachmentPaths="{x:Null}" Attachments="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" Mailbox="{x:Null}" MailboxBackup="{x:Reference __ReferenceID1}" ReplyTo="{x:Null}" TextBody="{x:Null}" AttachmentInputMode="Builder" AuthScopesInvalid="False" Body="[OnboardingEmail]" ConnectionId="d3a25ef7-edf6-4e4c-9355-661c7c1fa9cb" DisplayName="Send Test Email" sap:VirtualizedContainerService.HintSize="416,586" sap2010:WorkflowViewState.IdRef="SendMailConnections_3" Importance="Normal" InputType="HTML" SaveAsDraft="False" Subject="Welcome to UiPath - Sales New Hire Orientation" To="[in_Config(&quot;SendMail_TestMode&quot;).ToString.Split(&quot;;&quot;)]" UseConnectionService="True" UseSharedMailbox="False">
-            <umam:SendMailConnections.AttachmentList>
-              <scg:List x:TypeArguments="InArgument(upr:IResource)" Capacity="4">
-                <InArgument x:TypeArguments="upr:IResource">[AttachmentFile]</InArgument>
-              </scg:List>
-            </umam:SendMailConnections.AttachmentList>
-            <umam:SendMailConnections.AttachmentsBackup>
-              <usau:BackupSlot x:TypeArguments="umame:AttachmentInputMode" StoredValue="Builder">
-                <usau:BackupSlot.BackupValues>
-                  <scg:List x:TypeArguments="x:Object" x:Key="Existing" Capacity="1">
-                    <x:Null />
-                  </scg:List>
-                </usau:BackupSlot.BackupValues>
-              </usau:BackupSlot>
-            </umam:SendMailConnections.AttachmentsBackup>
-            <umam:SendMailConnections.InputTypeBackup>
-              <usau:BackupSlot x:TypeArguments="umame:BodyInputType" StoredValue="HTML">
-                <usau:BackupSlot.BackupValues>
-                  <scg:Dictionary x:TypeArguments="umame:BodyInputType, scg:List(x:Object)" />
-                </usau:BackupSlot.BackupValues>
-              </usau:BackupSlot>
-            </umam:SendMailConnections.InputTypeBackup>
-            <umam:SendMailConnections.MailboxArg>
-              <umamm:MailboxArgument SharedMailbox="{x:Null}" UseSharedMailbox="False">
-                <umamm:MailboxArgument.Backup>
-                  <usau:BackupSlot x:TypeArguments="umame:MailboxSelectionMode" x:Name="__ReferenceID1" StoredValue="UseISMailbox">
-                    <usau:BackupSlot.BackupValues>
-                      <scg:List x:TypeArguments="x:Object" x:Key="NoMailbox" Capacity="1">
-                        <x:Null />
-                      </scg:List>
-                    </usau:BackupSlot.BackupValues>
-                  </usau:BackupSlot>
-                </umamm:MailboxArgument.Backup>
-              </umamm:MailboxArgument>
-            </umam:SendMailConnections.MailboxArg>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </umam:SendMailConnections>
-        </Sequence>
-      </If.Else>
-    </If>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
   </Sequence>
 </Activity>
