@@ -145,7 +145,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1166,4021" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="590,4331" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="EmployeeTable" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="Config" />
@@ -190,13 +190,13 @@
         <InArgument x:TypeArguments="scg:List(x:String)">[new List(Of String)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[EmployeeTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="590,3066" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[EmployeeTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="590,3376" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="556,2870" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="556,3180" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <Sequence.Variables>
               <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="QueueItemContent" />
             </Sequence.Variables>
@@ -311,7 +311,7 @@
                 </Assign.Value>
               </Assign>
             </Sequence>
-            <TryCatch DisplayName="Try to Add for processing" sap:VirtualizedContainerService.HintSize="522,1186" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch DisplayName="Try to Add for processing" sap:VirtualizedContainerService.HintSize="522,1496" sap2010:WorkflowViewState.IdRef="TryCatch_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -319,23 +319,43 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <TryCatch.Try>
-                <Sequence sap:VirtualizedContainerService.HintSize="484,935" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                <Sequence sap:VirtualizedContainerService.HintSize="484,1245" sap2010:WorkflowViewState.IdRef="Sequence_11">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" ContinueOnError="False" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="450,228" sap2010:WorkflowViewState.IdRef="AddQueueItem_2" ItemInformationCollection="[QueueItemContent]" Priority="Normal" QueueType="NewHireQueue" Reference="[QueueItemContent(&quot;EmployeeID&quot;).ToString]">
-                    <ui:AddQueueItem.ItemInformation>
-                      <scg:Dictionary x:TypeArguments="x:String, InArgument" />
-                    </ui:AddQueueItem.ItemInformation>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </ui:AddQueueItem>
+                  <If Condition="[NOT CurrentRow(&quot;Location_03_from_the_Top&quot;).ToString.Contains(&quot;Japan&quot;)]" DisplayName="If NOT Japan" sap:VirtualizedContainerService.HintSize="450,538" sap2010:WorkflowViewState.IdRef="If_3">
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,279" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" ContinueOnError="False" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="382,219" sap2010:WorkflowViewState.IdRef="AddQueueItem_2" ItemInformationCollection="[QueueItemContent]" Priority="Normal" QueueType="NewHireQueue" Reference="[QueueItemContent(&quot;EmployeeID&quot;).ToString]">
+                          <ui:AddQueueItem.ItemInformation>
+                            <scg:Dictionary x:TypeArguments="x:String, InArgument" />
+                          </ui:AddQueueItem.ItemInformation>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:AddQueueItem>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </If.Else>
+                  </If>
                   <uasc:AppendItemToCollection x:TypeArguments="x:String" Collection="[EmailList]" DisplayName="Append Items to Collection" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="AppendItemToCollection`1_1">
                     <uasc:AppendItemToCollection.Items>
                       <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">

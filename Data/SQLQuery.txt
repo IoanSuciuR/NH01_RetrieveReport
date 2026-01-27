@@ -1,1 +1,1 @@
-﻿select * from ActiveReport where not Supervisory_Organization like '%amer%' and not Supervisory_Organization like '%bdr%' and Hire_Date  BETWEEN <period> and Manager_Level_04_Email like '%mark.gibbs@uipath.com%'
+﻿select * from ActiveReport where not Supervisory_Organization like '%BDR%' and Hire_Date  BETWEEN <period> and Manager_Level_04_Email like '%mark.gibbs@uipath.com%'
