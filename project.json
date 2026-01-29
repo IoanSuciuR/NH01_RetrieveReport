@@ -5,13 +5,20 @@
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.Database.Activities": "[2.0.0]",
+    "UiPath.DataService.Activities": "[25.9.3]",
     "UiPath.Excel.Activities": "[2.24.4]",
+    "UiPath.IntegrationService.Activities": "[1.22.0]",
     "UiPath.MicrosoftOffice365.Activities": "[3.4.10]",
     "UiPath.System.Activities": "[24.10.8]",
     "UiPath.UIAutomation.Activities": "[24.10.13]"
   },
   "webServices": [],
-  "entitiesStores": [],
+  "entitiesStores": [
+    {
+      "serviceDocument": ".entities/EntitiesStore.json",
+      "namespace": "NH01_RetrieveReport"
+    }
+  ],
   "schemaVersion": "4.0",
   "studioVersion": "24.10.16.0",
   "projectVersion": "1.0.9",
